@@ -904,7 +904,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">JOLT<span>.</span></div>
-  <p>© 2025 Jolt Procurement Consulting. All rights reserved.<br><a href="mailto:info@joltprocurement.com" style="color:var(--gold); text-decoration:none;">info@joltprocurement.com</a></p>
+  <p>© 2025 Jolt Procurement Consulting. All rights reserved.<br><a href="#" onclick="window.location='mai'+'lto:'+'info'+'@'+'joltprocurement.com'; return false;" style="color:var(--gold); text-decoration:none;">info&#64;joltprocurement&#46;com</a></p>
   <nav>
     <ul>
       <li><a href="#how">How It Works</a></li>
@@ -914,7 +914,7 @@
   </nav>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -941,13 +941,4 @@
       if (response.ok) {
         form.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
-      } else {
-        alert('Something went wrong. Please email us directly at info@joltprocurement.com');
-      }
-    } catch (err) {
-      alert('Something went wrong. Please email us directly at info@joltprocurement.com');
-    }
-  });
-</script>
-</body>
-</html>
+      } else
