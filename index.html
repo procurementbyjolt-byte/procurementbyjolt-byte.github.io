@@ -904,7 +904,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">JOLT<span>.</span></div>
-  <p>© 2025 Jolt Procurement Consulting. All rights reserved.<br><a href="#" onclick="window.location='mai'+'lto:'+'info'+'@'+'joltprocurement.com'; return false;" style="color:var(--gold); text-decoration:none;">info&#64;joltprocurement&#46;com</a></p>
+  <p>© 2025 Jolt Procurement Consulting. All rights reserved.<br><span id="footer-email"></span></p>
   <nav>
     <ul>
       <li><a href="#how">How It Works</a></li>
@@ -914,7 +914,14 @@
   </nav>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+  // Render footer email via JS
+  (function() {
+    var u = "info", d = "joltprocurement.com";
+    var el = document.getElementById("footer-email");
+    if (el) { el.innerHTML = "<a href=\"mailto:" + u + "@" + d + "\" style=\"color:var(--gold);text-decoration:none;\">" + u + "@" + d + "</a>"; }
+  })();
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
