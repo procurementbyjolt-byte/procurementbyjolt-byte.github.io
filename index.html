@@ -837,28 +837,28 @@
         </div>
       </div>
       <div class="reveal">
-        <form id="scanForm">
+        <form id="scanForm" action="https://formspree.io/f/mbdznlay" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label for="fname">First Name</label>
-              <input type="text" id="fname" placeholder="Jane" required>
+              <input type="text" id="fname" name="first_name" placeholder="Jane" required>
             </div>
             <div class="form-group">
               <label for="lname">Last Name</label>
-              <input type="text" id="lname" placeholder="Smith" required>
+              <input type="text" id="lname" name="last_name" placeholder="Smith" required>
             </div>
           </div>
           <div class="form-group">
             <label for="email">Work Email</label>
-            <input type="email" id="email" placeholder="jane@company.com" required>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" required>
           </div>
           <div class="form-group">
             <label for="company">Company Name</label>
-            <input type="text" id="company" placeholder="Acme Corp" required>
+            <input type="text" id="company" name="company" placeholder="Acme Corp" required>
           </div>
           <div class="form-group">
             <label for="product">What Are You Buying or Renewing?</label>
-            <select id="product">
+            <select id="product" name="product">
               <option value="" disabled selected>Select a category...</option>
               <option>Microsoft 365 / Office</option>
               <option>Microsoft Azure</option>
@@ -873,7 +873,7 @@
           </div>
           <div class="form-group">
             <label for="spend">Approximate Annual Spend on This</label>
-            <select id="spend">
+            <select id="spend" name="annual_spend">
               <option value="" disabled selected>Select a range...</option>
               <option>Under $25,000</option>
               <option>$25,000 – $100,000</option>
@@ -885,7 +885,7 @@
           </div>
           <div class="form-group">
             <label for="notes">Anything Else We Should Know?</label>
-            <textarea id="notes" placeholder="Renewal date, current vendor, specific concerns — whatever context helps..."></textarea>
+            <textarea id="notes" name="notes" placeholder="Renewal date, current vendor, specific concerns — whatever context helps..."></textarea>
           </div>
           <div class="form-submit">
             <button type="submit" class="btn-primary">Submit for Free Scan</button>
@@ -904,7 +904,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">JOLT<span>.</span></div>
-  <p>© 2025 Jolt Procurement Consulting. All rights reserved.</p>
+  <p>© 2025 Jolt Procurement Consulting. All rights reserved.<br><a href="mailto:info@joltprocurement.com" style="color:var(--gold); text-decoration:none;">info@joltprocurement.com</a></p>
   <nav>
     <ul>
       <li><a href="#how">How It Works</a></li>
@@ -927,11 +927,26 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Form submit
-  document.getElementById('scanForm').addEventListener('submit', function(e) {
+  // Form submit with Formspree
+  document.getElementById('scanForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    this.style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+    const form = this;
+    const data = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please email us directly at info@joltprocurement.com');
+      }
+    } catch (err) {
+      alert('Something went wrong. Please email us directly at info@joltprocurement.com');
+    }
   });
 </script>
 </body>
