@@ -15,573 +15,159 @@
     --gold-pale: #f5e6b8;
     --white: #f8f6f0;
     --grey: #8a9ab5;
-    --accent: #2a4a7f;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
+  body { background: var(--navy); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-  body {
-    background: var(--navy);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.4rem 4rem;
-    background: rgba(10,22,40,0.88);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(201,168,76,0.12);
-  }
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 0.08em;
-    color: var(--gold);
-    text-decoration: none;
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 4rem; background: rgba(10,22,40,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(201,168,76,0.12); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.08em; color: var(--gold); text-decoration: none; }
   .nav-logo span { color: var(--white); }
   nav ul { list-style: none; display: flex; gap: 2.5rem; }
-  nav ul a {
-    color: var(--grey);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
+  nav ul a { color: var(--grey); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
   nav ul a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--gold);
-    color: var(--navy) !important;
-    padding: 0.55rem 1.4rem;
-    border-radius: 2px;
-    font-weight: 500 !important;
-    color: var(--navy);
-    transition: background 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+  .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 0.55rem 1.4rem; border-radius: 2px; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
 
-  /* ─── HERO ─── */
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 10rem 4rem 6rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background:
-      radial-gradient(ellipse 60% 70% at 80% 50%, rgba(42,74,127,0.35) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.08) 0%, transparent 60%);
-  }
-  .hero-grid {
-    position: absolute; inset: 0; z-index: 0;
-    background-image:
-      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-  }
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 4rem 6rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(42,74,127,0.35) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.08) 0%, transparent 60%); }
+  .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 60px 60px; }
   .hero-content { position: relative; z-index: 1; max-width: 900px; }
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.2s forwards;
-  }
-  .hero-headline {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4.5rem, 10vw, 9rem);
-    line-height: 0.92;
-    letter-spacing: 0.02em;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
-  }
-  .hero-headline em {
-    font-style: normal;
-    color: var(--gold);
-    display: block;
-  }
-  .hero-sub {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--grey);
-    max-width: 560px;
-    margin-bottom: 3rem;
-    font-weight: 300;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
-  }
+  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.7s 0.2s forwards; }
+  .hero-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4.5rem, 10vw, 9rem); line-height: 0.92; letter-spacing: 0.02em; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+  .hero-headline em { font-style: normal; color: var(--gold); display: block; }
+  .hero-sub { font-size: 1.15rem; line-height: 1.7; color: var(--grey); max-width: 560px; margin-bottom: 3rem; font-weight: 300; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
   .hero-sub strong { color: var(--white); font-weight: 500; }
-  .hero-actions {
-    display: flex; gap: 1rem; align-items: center;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-  }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--navy);
-    padding: 1rem 2.2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s, transform 0.15s;
-  }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+  .hero-stat-bar { display: flex; gap: 4rem; margin-top: 6rem; opacity: 0; animation: fadeUp 0.8s 1s forwards; padding-top: 3rem; border-top: 1px solid rgba(201,168,76,0.12); flex-wrap: wrap; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--gold); line-height: 1; letter-spacing: 0.05em; }
+  .stat-label { font-size: 0.78rem; color: var(--grey); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 0.3rem; }
+
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 1rem 2.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s; }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-  .btn-ghost {
-    border: 1px solid rgba(201,168,76,0.4);
-    color: var(--gold);
-    padding: 1rem 2.2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: border-color 0.2s, background 0.2s;
-  }
+  .btn-ghost { border: 1px solid rgba(201,168,76,0.4); color: var(--gold); padding: 1rem 2.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s, background 0.2s; }
   .btn-ghost:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
 
-  .hero-stat-bar {
-    display: flex; gap: 4rem; margin-top: 6rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 1s forwards;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(201,168,76,0.12);
-  }
-  .stat { }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.8rem;
-    color: var(--gold);
-    line-height: 1;
-    letter-spacing: 0.05em;
-  }
-  .stat-label {
-    font-size: 0.78rem;
-    color: var(--grey);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-top: 0.3rem;
-  }
-
-  /* ─── SECTIONS ─── */
-  section {
-    padding: 7rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.2rem;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
-    line-height: 1;
-    letter-spacing: 0.03em;
-    margin-bottom: 1.5rem;
-  }
+  .section-wrap { padding: 7rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1; letter-spacing: 0.03em; margin-bottom: 1.5rem; }
   .section-title em { font-style: normal; color: var(--gold); }
-  .section-body {
-    font-size: 1.05rem;
-    color: var(--grey);
-    line-height: 1.75;
-    max-width: 640px;
-    font-weight: 300;
-  }
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, rgba(201,168,76,0.3) 0%, transparent 100%);
-    margin: 0 4rem;
-  }
+  .section-body { font-size: 1.05rem; color: var(--grey); line-height: 1.75; max-width: 640px; font-weight: 300; }
+  .divider { height: 1px; background: linear-gradient(90deg, rgba(201,168,76,0.3) 0%, transparent 100%); margin: 0 4rem; }
 
-  /* ─── PROBLEM ─── */
-  #problem { padding-bottom: 3rem; }
-  .problem-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5px;
-    margin-top: 4rem;
-    background: rgba(201,168,76,0.1);
-  }
-  .problem-card {
-    background: var(--navy-mid);
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .problem-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s;
-  }
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5px; margin-top: 4rem; background: rgba(201,168,76,0.1); }
+  .problem-card { background: var(--navy-mid); padding: 2.5rem; position: relative; overflow: hidden; }
+  .problem-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
   .problem-card:hover::before { transform: scaleX(1); }
-  .problem-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
-    color: rgba(201,168,76,0.15);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-  .problem-card h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.8rem;
-    text-transform: uppercase;
-  }
-  .problem-card p {
-    font-size: 0.9rem;
-    color: var(--grey);
-    line-height: 1.65;
-  }
+  .problem-num { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 1rem; }
+  .problem-card h3 { font-size: 1rem; font-weight: 500; letter-spacing: 0.05em; margin-bottom: 0.8rem; text-transform: uppercase; }
+  .problem-card p { font-size: 0.9rem; color: var(--grey); line-height: 1.65; }
 
-  /* ─── HOW IT WORKS ─── */
-  #how {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-  .how-steps { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
-  .how-step {
-    display: flex; gap: 1.5rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    position: relative;
-  }
-  .step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    color: rgba(201,168,76,0.2);
-    line-height: 1;
-    min-width: 2.5rem;
-    transition: color 0.3s;
-  }
+  .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .how-steps { margin-top: 3rem; display: flex; flex-direction: column; }
+  .how-step { display: flex; gap: 1.5rem; padding: 2rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(201,168,76,0.2); line-height: 1; min-width: 2.5rem; transition: color 0.3s; }
   .how-step:hover .step-num { color: var(--gold); }
-  .step-content h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
+  .step-content h3 { font-size: 1rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem; }
   .step-content p { font-size: 0.9rem; color: var(--grey); line-height: 1.65; }
-  .how-visual {
-    background: var(--navy-mid);
-    border: 1px solid rgba(201,168,76,0.12);
-    padding: 3rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .how-visual::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; right: -40px;
-    width: 180px; height: 180px;
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 50%;
-  }
-  .how-visual::before {
-    content: '';
-    position: absolute;
-    bottom: -80px; right: -80px;
-    width: 280px; height: 280px;
-    border: 1px solid rgba(201,168,76,0.07);
-    border-radius: 50%;
-  }
-  .visual-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--gold);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-  }
-  .visual-big {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5.5rem;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
+  .how-visual { background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.12); padding: 3rem; }
+  .visual-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 2rem; }
+  .visual-big { font-family: 'Bebas Neue', sans-serif; font-size: 5.5rem; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
   .visual-desc { font-size: 0.85rem; color: var(--grey); line-height: 1.6; }
-  .visual-rule {
-    margin: 2rem 0;
-    height: 1px;
-    background: rgba(201,168,76,0.15);
-  }
+  .visual-rule { margin: 2rem 0; height: 1px; background: rgba(201,168,76,0.15); }
   .visual-item { margin-bottom: 1rem; }
   .visual-item-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--grey); }
-  .visual-item-val {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    color: var(--white);
-    letter-spacing: 0.05em;
-  }
+  .visual-item-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--white); letter-spacing: 0.05em; }
 
-  /* ─── MODEL ─── */
-  #model {
-    background: var(--navy-mid);
-    max-width: 100%;
-    padding: 7rem 4rem;
-    border-top: 1px solid rgba(201,168,76,0.12);
-    border-bottom: 1px solid rgba(201,168,76,0.12);
-  }
-  .model-inner { max-width: 1200px; margin: 0 auto; }
+  .model-bg { background: var(--navy-mid); border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12); }
   .model-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-top: 4rem; align-items: start; }
   .model-explainer p { font-size: 1.05rem; color: var(--grey); line-height: 1.8; margin-bottom: 1.2rem; }
   .model-explainer strong { color: var(--white); font-weight: 500; }
-  .model-card {
-    background: var(--navy);
-    border: 1px solid rgba(201,168,76,0.2);
-    padding: 3rem;
-    position: relative;
-  }
-  .model-card-tag {
-    position: absolute; top: -1px; left: 3rem;
-    background: var(--gold);
-    color: var(--navy);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.8rem;
-    font-weight: 500;
-  }
-  .model-card h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
-  }
+  .model-card { background: var(--navy); border: 1px solid rgba(201,168,76,0.2); padding: 3rem; position: relative; }
+  .model-card-tag { position: absolute; top: -1px; left: 3rem; background: var(--gold); color: var(--navy); font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.3rem 0.8rem; font-weight: 500; }
+  .model-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; margin-top: 0.5rem; }
   .model-card > p { font-size: 0.88rem; color: var(--grey); line-height: 1.65; margin-bottom: 2rem; }
-  .model-example {
-    background: rgba(201,168,76,0.05);
-    border-left: 2px solid var(--gold);
-    padding: 1.5rem;
-  }
-  .model-example-row {
-    display: flex; justify-content: space-between; align-items: baseline;
-    margin-bottom: 0.7rem;
-  }
+  .model-example { background: rgba(201,168,76,0.05); border-left: 2px solid var(--gold); padding: 1.5rem; }
+  .model-example-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.7rem; }
   .model-example-row:last-child { margin-bottom: 0; }
   .mer-label { font-size: 0.78rem; color: var(--grey); text-transform: uppercase; letter-spacing: 0.1em; }
   .mer-val { font-family: 'DM Mono', monospace; font-size: 0.95rem; color: var(--white); }
   .mer-val.gold { color: var(--gold); font-size: 1.1rem; }
   .mer-rule { height: 1px; background: rgba(255,255,255,0.06); margin: 0.8rem 0; }
-  .zero-risk {
-    margin-top: 2.5rem;
-    display: flex; gap: 1rem; align-items: flex-start;
-  }
-  .zr-icon {
-    width: 36px; height: 36px; min-width: 36px;
-    border: 1px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-  }
+  .zero-risk { margin-top: 2.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+  .zr-icon { width: 36px; height: 36px; min-width: 36px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
   .zr-text { font-size: 0.85rem; color: var(--grey); line-height: 1.55; }
   .zr-text strong { color: var(--white); }
 
-  /* ─── MICROSOFT ─── */
-  #microsoft { }
   .msft-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4rem; align-items: end; }
-  .msft-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: rgba(201,168,76,0.1);
-  }
-  .msft-card {
-    background: var(--navy-mid);
-    padding: 2.5rem;
-    transition: background 0.3s;
-  }
+  .msft-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(201,168,76,0.1); }
+  .msft-card { background: var(--navy-mid); padding: 2.5rem; transition: background 0.3s; }
   .msft-card:hover { background: var(--navy-light); }
-  .msft-icon {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .msft-card h3 {
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-    color: var(--gold-pale);
-  }
+  .msft-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+  .msft-card h3 { font-size: 0.9rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; color: var(--gold-pale); }
   .msft-card p { font-size: 0.87rem; color: var(--grey); line-height: 1.6; }
-  .msft-cta {
-    margin-top: 4rem;
-    background: linear-gradient(135deg, rgba(42,74,127,0.4), rgba(10,22,40,0.8));
-    border: 1px solid rgba(201,168,76,0.2);
-    padding: 3rem;
-    display: flex; justify-content: space-between; align-items: center;
-    gap: 2rem;
-  }
+  .msft-cta { margin-top: 4rem; background: linear-gradient(135deg, rgba(42,74,127,0.4), rgba(10,22,40,0.8)); border: 1px solid rgba(201,168,76,0.2); padding: 3rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
   .msft-cta p { font-size: 1rem; color: var(--grey); max-width: 500px; line-height: 1.65; }
   .msft-cta strong { color: var(--white); }
 
-  /* ─── INTAKE FORM ─── */
-  #scan {
-    background: var(--navy);
-    max-width: 100%;
-    padding: 7rem 4rem;
-    border-top: 1px solid rgba(201,168,76,0.12);
-  }
-  .scan-inner { max-width: 1200px; margin: 0 auto; }
+  .scan-bg { border-top: 1px solid rgba(201,168,76,0.12); }
   .scan-cols { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; margin-top: 4rem; }
   .scan-pitch p { font-size: 1rem; color: var(--grey); line-height: 1.8; margin-bottom: 1.2rem; }
   .scan-pitch strong { color: var(--white); }
-  .scan-promise {
-    margin-top: 2.5rem;
-    display: flex; flex-direction: column; gap: 0.8rem;
-  }
-  .promise-item {
-    display: flex; gap: 1rem; align-items: flex-start;
-  }
-  .pi-dot {
-    width: 6px; height: 6px; min-width: 6px;
-    background: var(--gold);
-    margin-top: 0.5rem;
-  }
+  .scan-promise { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .promise-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .pi-dot { width: 6px; height: 6px; min-width: 6px; background: var(--gold); margin-top: 0.5rem; }
   .pi-text { font-size: 0.88rem; color: var(--grey); line-height: 1.5; }
   .pi-text strong { color: var(--white); font-weight: 500; }
-
   form { display: flex; flex-direction: column; gap: 1.2rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
   .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--grey);
-    font-family: 'DM Mono', monospace;
-  }
-  input, select, textarea {
-    background: var(--navy-mid);
-    border: 1px solid rgba(255,255,255,0.08);
-    color: var(--white);
-    padding: 0.85rem 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 300;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-    -webkit-appearance: none;
-  }
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--gold);
-  }
+  label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--grey); font-family: 'DM Mono', monospace; }
+  input, select, textarea { background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); color: var(--white); padding: 0.85rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 300; outline: none; transition: border-color 0.2s; width: 100%; -webkit-appearance: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold); }
   select option { background: var(--navy-mid); }
   textarea { resize: vertical; min-height: 120px; }
-  .form-submit {
-    display: flex; align-items: center; gap: 1.5rem; margin-top: 0.5rem;
-  }
+  .form-submit { display: flex; align-items: center; gap: 1.5rem; margin-top: 0.5rem; }
   .form-note { font-size: 0.78rem; color: var(--grey); }
-  .form-success {
-    display: none;
-    background: rgba(201,168,76,0.08);
-    border: 1px solid rgba(201,168,76,0.3);
-    padding: 2rem;
-    text-align: center;
-  }
+  .form-success { display: none; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.3); padding: 2rem; text-align: center; }
   .form-success h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 0.5rem; }
   .form-success p { color: var(--grey); font-size: 0.9rem; }
 
-  /* ─── FOOTER ─── */
-  footer {
-    background: #060e1a;
-    padding: 3rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(201,168,76,0.1);
-  }
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    color: var(--gold);
-    letter-spacing: 0.08em;
-  }
+  footer { background: #060e1a; padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(201,168,76,0.1); flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--gold); letter-spacing: 0.08em; }
   .footer-logo span { color: rgba(255,255,255,0.3); }
-  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
-  footer nav ul { gap: 2rem; }
-  footer nav ul a { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+  .footer-info { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.8; }
+  .footer-info a { color: var(--gold); text-decoration: none; }
+  footer nav ul { list-style: none; display: flex; gap: 2rem; }
+  footer nav ul a { font-size: 0.78rem; color: rgba(255,255,255,0.3); text-decoration: none; }
   footer nav ul a:hover { color: var(--gold); }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
     nav ul { display: none; }
     #hero { padding: 8rem 1.5rem 4rem; }
-    .hero-stat-bar { gap: 2rem; flex-wrap: wrap; }
-    section { padding: 4rem 1.5rem; }
+    .section-wrap { padding: 4rem 1.5rem; }
+    .hero-stat-bar { gap: 2rem; }
     .problem-grid { grid-template-columns: 1fr; }
-    #how { grid-template-columns: 1fr; gap: 3rem; }
+    .how-grid { grid-template-columns: 1fr; gap: 3rem; }
     .model-cols { grid-template-columns: 1fr; gap: 3rem; }
     .msft-header { grid-template-columns: 1fr; }
     .msft-grid { grid-template-columns: 1fr; }
     .msft-cta { flex-direction: column; }
     .scan-cols { grid-template-columns: 1fr; gap: 3rem; }
     .form-row { grid-template-columns: 1fr; }
-    #model, #scan { padding: 4rem 1.5rem; }
-    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
     .divider { margin: 0 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+    footer nav ul { justify-content: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">JOLT<span>.</span></a>
   <ul>
@@ -592,23 +178,16 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <div id="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">// Technology Procurement Consulting</p>
-    <h1 class="hero-headline">
-      Stop<br>
-      Overpaying<br>
-      <em>For Tech.</em>
-    </h1>
-    <p class="hero-sub">
-      Large enterprises have dedicated procurement teams that negotiate <strong>deep discounts</strong> on technology. Your business deserves the same advantage — without the overhead. Jolt levels the playing field.
-    </p>
+    <h1 class="hero-headline">Stop<br>Overpaying<br><em>For Tech.</em></h1>
+    <p class="hero-sub">Large enterprises have dedicated procurement teams that negotiate <strong>deep discounts</strong> on technology. Your business deserves the same advantage without the overhead. Jolt levels the playing field.</p>
     <div class="hero-actions">
       <a href="#scan" class="btn-primary">Get Your Free Scan</a>
-      <a href="#model" class="btn-ghost">How We're Paid</a>
+      <a href="#model" class="btn-ghost">How We Are Paid</a>
     </div>
     <div class="hero-stat-bar">
       <div class="stat">
@@ -617,11 +196,11 @@
       </div>
       <div class="stat">
         <div class="stat-num">25%</div>
-        <div class="stat-label">Of Savings — Our Fee</div>
+        <div class="stat-label">Of Savings - Our Fee</div>
       </div>
       <div class="stat">
         <div class="stat-num">75%</div>
-        <div class="stat-label">Of Savings — Stays With You</div>
+        <div class="stat-label">Of Savings - Stays With You</div>
       </div>
       <div class="stat">
         <div class="stat-num">$0</div>
@@ -633,93 +212,96 @@
 
 <div class="divider"></div>
 
-<!-- PROBLEM -->
-<section id="problem">
-  <div class="reveal">
-    <p class="section-label">// The Reality</p>
-    <h2 class="section-title">Your Vendors Know<br><em>More Than You Do.</em></h2>
-    <p class="section-body">Technology vendors publish list prices — but enterprise customers rarely pay them. Without insider knowledge and negotiating leverage, SMBs consistently overpay. That changes with Jolt.</p>
+<div id="problem">
+  <div class="section-wrap">
+    <div class="reveal">
+      <p class="section-label">// The Reality</p>
+      <h2 class="section-title">Your Vendors Know<br><em>More Than You Do.</em></h2>
+      <p class="section-body">Technology vendors publish list prices but enterprise customers rarely pay them. Without insider knowledge and negotiating leverage, SMBs consistently overpay. That changes with Jolt.</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="problem-num">01</div>
+        <h3>No Benchmark Pricing</h3>
+        <p>You do not know what a fair price looks like. Vendors quote whatever the market will bear and without comparative data, you accept it.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">02</div>
+        <h3>No Negotiating Power</h3>
+        <p>Enterprise clients bring volume and relationships to the table. SMBs bring neither and are priced accordingly. Jolt extends our network to you.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">03</div>
+        <h3>No Procurement Expertise</h3>
+        <p>Knowing when to push back, when to walk away, and what levers to pull takes years of experience your team simply does not have time to develop.</p>
+      </div>
+    </div>
   </div>
-  <div class="problem-grid reveal">
-    <div class="problem-card">
-      <div class="problem-num">01</div>
-      <h3>No Benchmark Pricing</h3>
-      <p>You don't know what a fair price looks like. Vendors quote whatever the market will bear — and without comparative data, you accept it.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-num">02</div>
-      <h3>No Negotiating Power</h3>
-      <p>Enterprise clients bring volume and relationships to the table. SMBs bring neither — and are priced accordingly. Jolt extends our network to you.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-num">03</div>
-      <h3>No Procurement Expertise</h3>
-      <p>Knowing when to push back, when to walk away, and what levers to pull takes years of procurement experience your team simply doesn't have time to develop.</p>
-    </div>
-  </div>
-</section>
+</div>
 
 <div class="divider"></div>
 
-<!-- HOW IT WORKS -->
-<section id="how" style="max-width:1200px; margin: 0 auto; padding: 7rem 4rem;">
-  <div class="reveal">
-    <p class="section-label">// Process</p>
-    <h2 class="section-title">Three Steps.<br><em>Zero Risk.</em></h2>
-    <p class="section-body">We've stripped the consulting model down to what matters: results. No retainers, no lengthy engagements, no ambiguity.</p>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h3>Submit Your Deal</h3>
-          <p>Share your current pricing or a vendor quote — software, hardware, cloud, or services. Our free scan takes 48 hours and costs you nothing.</p>
+<div id="how">
+  <div class="section-wrap">
+    <div class="how-grid">
+      <div class="reveal">
+        <p class="section-label">// Process</p>
+        <h2 class="section-title">Three Steps.<br><em>Zero Risk.</em></h2>
+        <p class="section-body">We have stripped the consulting model down to what matters: results. No retainers, no lengthy engagements, no ambiguity.</p>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Submit Your Deal</h3>
+              <p>Share your current pricing or a vendor quote. Software, hardware, cloud, or services. Our free scan takes 48 hours and costs you nothing.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>We Identify the Gap</h3>
+              <p>Our team benchmarks your pricing against market data and our network. We map exactly where savings exist and build a negotiation strategy.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>We Negotiate. You Save.</h3>
+              <p>We go to work either alongside you or directly with your vendor. When we secure savings, we take 25% of what we save you. That is it.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="how-step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h3>We Identify the Gap</h3>
-          <p>Our team benchmarks your pricing against market data and our network. We map exactly where savings exist and build a negotiation strategy.</p>
+      <div class="how-visual reveal">
+        <div class="visual-label">// Example Outcome</div>
+        <div class="visual-big">$36K</div>
+        <div class="visual-desc">Annual savings secured on a Microsoft 365 renewal for a 120-person professional services firm.</div>
+        <div class="visual-rule"></div>
+        <div class="visual-item">
+          <div class="visual-item-label">Original Contract Value</div>
+          <div class="visual-item-val">$144,000 / yr</div>
         </div>
-      </div>
-      <div class="how-step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h3>We Negotiate. You Save.</h3>
-          <p>We go to work — either alongside you or directly with your vendor. When we secure savings, we take 25% of what we save you. That's it.</p>
+        <div class="visual-item">
+          <div class="visual-item-label">Negotiated Price</div>
+          <div class="visual-item-val">$108,000 / yr</div>
+        </div>
+        <div class="visual-item">
+          <div class="visual-item-label">Your Net Savings (75%)</div>
+          <div class="visual-item-val" style="color:var(--gold)">$27,000 / yr</div>
+        </div>
+        <div class="visual-item">
+          <div class="visual-item-label">Jolt Fee (25%)</div>
+          <div class="visual-item-val" style="color:var(--grey); font-size:1.2rem;">$9,000</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="how-visual reveal">
-    <div class="visual-label">// Example Outcome</div>
-    <div class="visual-big">$36K</div>
-    <div class="visual-desc">Annual savings secured on a Microsoft 365 renewal for a 120-person professional services firm.</div>
-    <div class="visual-rule"></div>
-    <div class="visual-item">
-      <div class="visual-item-label">Original Contract Value</div>
-      <div class="visual-item-val">$144,000 / yr</div>
-    </div>
-    <div class="visual-item">
-      <div class="visual-item-label">Negotiated Price</div>
-      <div class="visual-item-val">$108,000 / yr</div>
-    </div>
-    <div class="visual-item">
-      <div class="visual-item-label">Your Net Savings (75%)</div>
-      <div class="visual-item-val" style="color:var(--gold)">$27,000 / yr</div>
-    </div>
-    <div class="visual-item">
-      <div class="visual-item-label">Jolt Fee (25%)</div>
-      <div class="visual-item-val" style="font-size:1.2rem; color:var(--grey)">$9,000</div>
-    </div>
-  </div>
-</section>
+</div>
 
 <div class="divider"></div>
 
-<!-- MODEL -->
-<div id="model">
-  <div class="model-inner">
+<div id="model" class="model-bg">
+  <div class="section-wrap">
     <div class="reveal">
       <p class="section-label">// Our Model</p>
       <h2 class="section-title">We Only Win<br><em>When You Win.</em></h2>
@@ -728,16 +310,16 @@
       <div class="model-explainer reveal">
         <p>The traditional consulting model charges you regardless of results. <strong>We rejected that entirely.</strong> Jolt operates on a pure gain-share basis: we have skin in the game on every engagement.</p>
         <p>Bring us your renewal, your new purchase, your vendor quote. We scan it, assess the opportunity, and if we see room to negotiate, we get to work. <strong>You pay nothing unless we deliver savings.</strong></p>
-        <p>When we do save you money, we take 25% of the gross savings — once. You keep the remaining 75%, every year the deal renews. The math almost always works overwhelmingly in your favor.</p>
+        <p>When we do save you money, we take 25% of the gross savings. You keep the remaining 75% every year the deal renews.</p>
         <div class="zero-risk">
-          <div class="zr-icon">✓</div>
-          <div class="zr-text"><strong>Zero financial risk.</strong> If Jolt doesn't save you money, you pay nothing. No hidden fees, no retainers, no "consulting hours."</div>
+          <div class="zr-icon">&#10003;</div>
+          <div class="zr-text"><strong>Zero financial risk.</strong> If Jolt does not save you money, you pay nothing. No hidden fees, no retainers, no consulting hours.</div>
         </div>
       </div>
       <div class="model-card reveal">
         <div class="model-card-tag">Gain-Share Model</div>
         <h3>The Numbers, Plainly.</h3>
-        <p>Our fee is 25% of the savings we secure. The remaining 75% goes directly to your bottom line — every year the savings persist.</p>
+        <p>Our fee is 25% of the savings we secure. The remaining 75% goes directly to your bottom line every year the savings persist.</p>
         <div class="model-example">
           <div class="model-example-row">
             <span class="mer-label">Your Current Spend</span>
@@ -767,55 +349,55 @@
   </div>
 </div>
 
-<!-- MICROSOFT -->
-<section id="microsoft">
-  <div class="msft-header reveal">
-    <div>
-      <p class="section-label">// Featured Opportunity</p>
-      <h2 class="section-title">Microsoft Is<br><em>Overcharging You.</em></h2>
+<div id="microsoft">
+  <div class="section-wrap">
+    <div class="msft-header reveal">
+      <div>
+        <p class="section-label">// Featured Opportunity</p>
+        <h2 class="section-title">Microsoft Is<br><em>Overcharging You.</em></h2>
+      </div>
+      <p class="section-body">Microsoft licensing including M365, Azure, Copilot, and Dynamics is one of the most complex and opaque pricing structures in enterprise software. Most SMBs are on the wrong tier, with the wrong terms, paying the wrong price.</p>
     </div>
-    <p class="section-body" style="margin-top:0">Microsoft licensing — M365, Azure, Copilot, Dynamics — is one of the most complex and opaque pricing structures in enterprise software. Most SMBs are on the wrong tier, with the wrong terms, paying the wrong price.</p>
+    <div class="msft-grid reveal">
+      <div class="msft-card">
+        <div class="msft-icon">&#9632;</div>
+        <h3>Microsoft 365</h3>
+        <p>Seat counts, license tiers, E3 vs E5 vs Business Premium. Most companies are over-licensed or on an outdated agreement. We find the right fit at the right price.</p>
+      </div>
+      <div class="msft-card">
+        <div class="msft-icon">&#9729;</div>
+        <h3>Azure and Cloud</h3>
+        <p>Reserved instances, savings plans, and enterprise agreements can dramatically reduce Azure spend. Most SMBs are on pay-as-you-go rates they do not need to be on.</p>
+      </div>
+      <div class="msft-card">
+        <div class="msft-icon">&#10022;</div>
+        <h3>Microsoft Copilot</h3>
+        <p>Copilot for Microsoft 365 pricing varies significantly by agreement structure. Before you renew or expand, let us benchmark your contract against the market.</p>
+      </div>
+      <div class="msft-card">
+        <div class="msft-icon">&#9671;</div>
+        <h3>Renewals and EAs</h3>
+        <p>Enterprise Agreement renewals are a prime moment to renegotiate. Most companies simply sign the renewal. We go back to the table and almost always find room.</p>
+      </div>
+    </div>
+    <div class="msft-cta reveal">
+      <p><strong>If your business runs on Microsoft,</strong> the odds are high that Jolt can find meaningful savings. Most of our Microsoft clients see 15-30% reductions on their annual spend, often on their very next renewal.</p>
+      <a href="#scan" class="btn-primary" style="white-space:nowrap">Scan My Microsoft Deal</a>
+    </div>
   </div>
-  <div class="msft-grid reveal">
-    <div class="msft-card">
-      <div class="msft-icon">⊞</div>
-      <h3>Microsoft 365</h3>
-      <p>Seat counts, license tiers, E3 vs E5 vs Business Premium — most companies are over-licensed or on an outdated agreement. We find the right fit at the right price.</p>
-    </div>
-    <div class="msft-card">
-      <div class="msft-icon">☁</div>
-      <h3>Azure & Cloud</h3>
-      <p>Reserved instances, savings plans, and enterprise agreements can dramatically reduce Azure spend. Most SMBs are on pay-as-you-go rates they don't need to be on.</p>
-    </div>
-    <div class="msft-card">
-      <div class="msft-icon">✦</div>
-      <h3>Microsoft Copilot</h3>
-      <p>Copilot for Microsoft 365 pricing varies significantly by agreement structure. Before you renew or expand, let us benchmark your contract against the market.</p>
-    </div>
-    <div class="msft-card">
-      <div class="msft-icon">⬡</div>
-      <h3>Renewals & EAs</h3>
-      <p>Enterprise Agreement renewals are a prime moment to renegotiate. Most companies simply sign the renewal. We go back to the table and almost always find room.</p>
-    </div>
-  </div>
-  <div class="msft-cta reveal">
-    <p><strong>If your business runs on Microsoft,</strong> the odds are high that Jolt can find meaningful savings. Most of our Microsoft clients see 15–30% reductions on their annual spend — often on their very next renewal.</p>
-    <a href="#scan" class="btn-primary" style="white-space:nowrap">Scan My Microsoft Deal</a>
-  </div>
-</section>
+</div>
 
 <div class="divider"></div>
 
-<!-- INTAKE FORM -->
-<div id="scan">
-  <div class="scan-inner">
+<div id="scan" class="scan-bg">
+  <div class="section-wrap">
     <div class="reveal">
       <p class="section-label">// Get Started</p>
       <h2 class="section-title">Request Your<br><em>Free Deal Scan.</em></h2>
     </div>
     <div class="scan-cols">
       <div class="scan-pitch reveal">
-        <p>Tell us a little about your situation and what you're buying — or what you've already been quoted. <strong>We'll reach out within one business day</strong> to discuss your opportunity and what savings might look like.</p>
+        <p>Tell us about your situation and what you are buying or what you have already been quoted. <strong>We will reach out within one business day</strong> to discuss your opportunity and what savings might look like.</p>
         <p>No commitment, no fee, no obligation. Just a straight answer on whether we think we can help.</p>
         <div class="scan-promise">
           <div class="promise-item">
@@ -832,7 +414,7 @@
           </div>
           <div class="promise-item">
             <div class="pi-dot"></div>
-            <div class="pi-text"><strong>No fee unless we save you money.</strong> That's the whole model.</div>
+            <div class="pi-text"><strong>No fee unless we save you money.</strong> That is the whole model.</div>
           </div>
         </div>
       </div>
@@ -849,8 +431,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="email">Work Email</label>
-            <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+            <label for="femail">Work Email</label>
+            <input type="email" id="femail" name="email" placeholder="jane@company.com" required>
           </div>
           <div class="form-group">
             <label for="company">Company Name</label>
@@ -872,39 +454,41 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="spend">Approximate Annual Spend on This</label>
+            <label for="spend">Approximate Annual Spend</label>
             <select id="spend" name="annual_spend">
               <option value="" disabled selected>Select a range...</option>
               <option>Under $25,000</option>
-              <option>$25,000 – $100,000</option>
-              <option>$100,000 – $500,000</option>
-              <option>$500,000 – $1M</option>
+              <option>$25,000 - $100,000</option>
+              <option>$100,000 - $500,000</option>
+              <option>$500,000 - $1M</option>
               <option>Over $1M</option>
               <option>Not Sure</option>
             </select>
           </div>
           <div class="form-group">
             <label for="notes">Anything Else We Should Know?</label>
-            <textarea id="notes" name="notes" placeholder="Renewal date, current vendor, specific concerns — whatever context helps..."></textarea>
+            <textarea id="notes" name="notes" placeholder="Renewal date, current vendor, specific concerns..."></textarea>
           </div>
           <div class="form-submit">
             <button type="submit" class="btn-primary">Submit for Free Scan</button>
-            <span class="form-note">We'll respond within 1 business day.</span>
+            <span class="form-note">We will respond within 1 business day.</span>
           </div>
         </form>
         <div class="form-success" id="formSuccess">
-          <h3>You're In.</h3>
-          <p>We've received your submission and will be in touch within one business day. Get ready for a better deal.</p>
+          <h3>You Are In.</h3>
+          <p>We have received your submission and will be in touch within one business day. Get ready for a better deal.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">JOLT<span>.</span></div>
-  <p>© 2025 Jolt Procurement Consulting. All rights reserved.<br><span id="footer-email"></span></p>
+  <div class="footer-info">
+    <div>2025 Jolt Procurement Consulting. All rights reserved.</div>
+    <div><a href="mailto:info@joltprocurement.com">info@joltprocurement.com</a></div>
+  </div>
   <nav>
     <ul>
       <li><a href="#how">How It Works</a></li>
@@ -915,37 +499,36 @@
 </footer>
 
 <script>
-  // Render footer email via JS
-  (function() {
-    var u = "info", d = "joltprocurement.com";
-    var el = document.getElementById("footer-email");
-    if (el) { el.innerHTML = "<a href=\"mailto:" + u + "@" + d + "\" style=\"color:var(--gold);text-decoration:none;\">" + u + "@" + d + "</a>"; }
-  })();
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        setTimeout(function() { entry.target.classList.add('visible'); }, i * 80);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+  reveals.forEach(function(el) { observer.observe(el); });
 
-  // Form submit with Formspree
-  document.getElementById('scanForm').addEventListener('submit', async function(e) {
+  document.getElementById('scanForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const form = this;
-    const data = new FormData(form);
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
+    var form = this;
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
       if (response.ok) {
         form.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
-      } else
+      } else {
+        alert('Something went wrong. Please email info@joltprocurement.com directly.');
+      }
+    }).catch(function() {
+      alert('Something went wrong. Please email info@joltprocurement.com directly.');
+    });
+  });
+</script>
+</body>
+</html>
